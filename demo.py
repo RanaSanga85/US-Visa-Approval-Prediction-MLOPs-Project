@@ -1,2 +1,3 @@
-from US_Visa.logger import logging
-logging.info("Welcome to custom log")
+import os
+mongo_db_url = os.getenv('MONGODB_URL')
+print(mongo_db_url)
