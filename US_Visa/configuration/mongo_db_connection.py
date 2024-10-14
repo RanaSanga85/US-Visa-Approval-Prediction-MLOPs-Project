@@ -1,6 +1,6 @@
 import sys
-from US_Visa import USVisaException
-from US_Visa import logging
+from US_Visa.exception import USVisaException
+from US_Visa.logger import logging
 
 import os
 from US_Visa.constants import DATABASE_NAME, MONGODB_URL_KEY
