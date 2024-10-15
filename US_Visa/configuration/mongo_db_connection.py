@@ -11,24 +11,26 @@ ca = certifi.where()
 
 class MongoDBClient:
     """
-    Class Name  : export_data_info_feature_store
-    Description : This method exports the dataframe from mongodb feature store as dataframe
+    Class Name  : MongoDBClient
+    Description : This class establishes a connection to a MongoDB database.
 
-    Output      : connection to mongodb database
-    On Failure  : raises as exception
+    Output      : Connection to the MongoDB database.
+    On Failure  : Raises a USVisaException.
     """
     client = None
 
-    def __init__(self, database_name = DATABASE_NAME) ->None:
+    def __init__(self, database_name=DATABASE_NAME) -> None:
         try:
             if MongoDBClient.client is None:
+                #mongo_db_url = os.environ[MONGODB_URL_KEY]  # Ensures env var exists
                 mongo_db_url = os.getenv(MONGODB_URL_KEY)
-                if mongo_db_url in None:
-                    raise Exception(f"Environment key :{MONGODB_URL_KEY} is not set")
-                MongoDBClient.client = pymongo.MongoClient(mongo_db_url, tlsCAFile = ca)
+                MongoDBClient.client = pymongo.MongoClient(mongo_db_url, tlsCAFile=ca)
             self.client = MongoDBClient.client
             self.database = self.client[database_name]
             self.database_name = database_name
-            logging.info("MongoDB connection succesfull")
+            logging.info("MongoDB connection successful")
+        except KeyError as e:
+            raise USVisaException(f"Environment key: {MONGODB_URL_KEY} is not set.", sys)
         except Exception as e:
             raise USVisaException(e, sys)
+      
