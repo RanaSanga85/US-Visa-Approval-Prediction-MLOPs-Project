@@ -3,8 +3,9 @@ import json
 import sys
 
 import pandas as pd
-from evidently.model_profile import Profile
-from evidently.model_profile.sections import DataDriftProfileSection
+from evidently.report import Report
+from evidently.metric_preset import DataDriftPreset
+
 
 from pandas import DataFrame
 
@@ -91,21 +92,26 @@ class DataValidation:
         On Failure  :   Write an exception log and then raise an exception
         """
         try:
-            data_drift_profile = Profile(sections=[DataDriftProfileSection()])
+            data_drift_profile = Report(metrics=[DataDriftPreset()])
 
-            data_drift_profile.calculate(reference_df, current_df)
+            data_drift_profile.run(reference_data=reference_df, current_data=current_df)
 
             report = data_drift_profile.json()
             json_report = json.loads(report)
 
             write_yaml_file(file_path=self.data_validation_config.drift_report_file_path, content=json_report)
 
-            n_features = json_report["data_drift"]["data"]["metrics"]["n_features"]
-            n_drifted_features = json_report["data_drift"]["data"]["metrics"]["n_drifted_features"]
+             # Safely extract values using get() to avoid KeyError
+            n_features = json_report.get("data_drift", {}).get("data", {}).get("metrics", {}).get("n_features", None)
+            n_drifted_features = json_report.get("data_drift", {}).get("data", {}).get("metrics", {}).get("n_drifted_features", None)
 
-            logging.info(f"{n_drifted_features}/{n_features} drift detected.")
-            drift_status = json_report["data_drift"]["data"]["metrics"]["dataset_drift"]
-            return drift_status
+            if n_features is not None and n_drifted_features is not None:
+                logging.info(f"{n_drifted_features}/{n_features} drift detected.")
+                drift_status = json_report["data_drift"]["data"]["metrics"]["dataset_drift"]
+                return drift_status
+            else:
+                logging.error("Data drift report structure is missing expected fields.")
+                return False
         except Exception as e:
             raise USVisaException(e, sys) from e
 

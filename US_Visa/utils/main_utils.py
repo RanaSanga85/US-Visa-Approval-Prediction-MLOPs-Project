@@ -7,7 +7,7 @@ import dill
 import yaml
 from pandas import DataFrame
 
-from US_Visa.exception import USvisaException
+from US_Visa.exception import USVisaException
 from US_Visa.logger import logging
 
 
@@ -20,7 +20,7 @@ def read_yaml_file(file_path: str) -> dict:
             return yaml.safe_load(yaml_file)
 
     except Exception as e:
-        raise USvisaException(e, sys) from e
+        raise USVisaException(e, sys) from e
     
 
 
@@ -36,7 +36,7 @@ def write_yaml_file(file_path: str, content: object, replace: bool = False) -> N
         with open(file_path, "w") as file:
             yaml.dump(content, file) #Writes content to a YAML file
     except Exception as e:
-        raise USvisaException(e, sys) from e
+        raise USVisaException(e, sys) from e
     
 
 
@@ -57,7 +57,7 @@ def load_object(file_path: str) -> object:
         return obj
 
     except Exception as e:
-        raise USvisaException(e, sys) from e
+        raise USVisaException(e, sys) from e
     
 
 
@@ -73,7 +73,7 @@ def save_numpy_array_data(file_path: str, array: np.array):
         with open(file_path, 'wb') as file_obj:
             np.save(file_obj, array)
     except Exception as e:
-        raise USvisaException(e, sys) from e
+        raise USVisaException(e, sys) from e
     
 
 
@@ -88,7 +88,7 @@ def load_numpy_array_data(file_path: str) -> np.array:
         with open(file_path, 'rb') as file_obj:
             return np.load(file_obj)
     except Exception as e:
-        raise USvisaException(e, sys) from e
+        raise USVisaException(e, sys) from e
 
 
 
@@ -107,7 +107,7 @@ def save_object(file_path: str, obj: object) -> None:
         logging.info("Exited the save_object method of utils")
 
     except Exception as e:
-        raise USvisaException(e, sys) from e
+        raise USVisaException(e, sys) from e
 
 
 
@@ -127,4 +127,4 @@ def drop_columns(df: DataFrame, cols: list)-> DataFrame:
         
         return df
     except Exception as e:
-        raise USvisaException(e, sys) from e
+        raise USVisaException(e, sys) from e
