@@ -59,7 +59,7 @@ bash
 ## Getting Started
 #### Step 1: Clone the repository
 bash
-`git clone https://github.com/your-username/us-visa-approval-prediction.git`
+</n>`git clone https://github.com/your-username/us-visa-approval-prediction.git`
 `cd us-visa-approval-prediction`
 
 #### Step 2: Setup MongoDB Connection
