@@ -56,7 +56,7 @@ You can install these dependencies via the requirements.txt file:
 
 ## Getting Started
 #### Step 1: Clone the repository
-<br> `git clone https://github.com/your-username/us-visa-approval-prediction.git`
+`git clone https://github.com/your-username/us-visa-approval-prediction.git`
 <br> `cd us-visa-approval-prediction`
 
 #### Step 2: Setup MongoDB Connection
