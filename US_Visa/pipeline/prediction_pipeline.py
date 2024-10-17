@@ -88,16 +88,14 @@ class USvisaData:
             raise USVisaException(e, sys) from e
 
 class USvisaClassifier:
-    def __init__(self,prediction_pipeline_config: USvisaPredictorConfig = USvisaPredictorConfig(),) -> None:
+    def __init__(self, prediction_pipeline_config: USvisaPredictorConfig = USvisaPredictorConfig()) -> None:
         """
         :param prediction_pipeline_config: Configuration for prediction the value
         """
         try:
-            # self.schema_config = read_yaml_file(SCHEMA_FILE_PATH)
             self.prediction_pipeline_config = prediction_pipeline_config
         except Exception as e:
             raise USVisaException(e, sys)
-
 
     def predict(self, dataframe) -> str:
         """
@@ -106,13 +104,15 @@ class USvisaClassifier:
         """
         try:
             logging.info("Entered predict method of USvisaClassifier class")
-             # Load the model from a local file path
-            model = USvisaEstimator(model_path=self.prediction_pipeline_config.model_file_path)
+
+            # Initialize USvisaEstimator with a USvisaPredictorConfig object
+            model = USvisaEstimator(predictor_config=self.prediction_pipeline_config)
             
             # Perform the prediction
-            result =  model.predict(dataframe)
+            result = model.predict(dataframe)
             
             return result
-        
+
         except Exception as e:
             raise USVisaException(e, sys)
+
