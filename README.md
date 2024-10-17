@@ -52,19 +52,13 @@ logging
 matplotlib
 seaborn
 You can install these dependencies via the requirements.txt file:
-
-bash
 `pip install -r requirements.txt`
 
 ## Getting Started
 #### Step 1: Clone the repository
-bash
 <br> `git clone https://github.com/your-username/us-visa-approval-prediction.git`
 <br> `cd us-visa-approval-prediction`
 
 #### Step 2: Setup MongoDB Connection
 You will need to configure the MongoDB connection by editing the file under `US_Visa/configuration/mongo_db_connection.py`. This will allow the pipeline to fetch the visa data from MongoDB for further processing.
 
-
-
-Folder Structure
