@@ -18,7 +18,7 @@ This folder contains the core modules for the machine learning pipeline, includi
 
 #### 2. configuration/
 This folder contains files related to configurations and connections, including:
-mongo_db_connect.py: Handles the connection to the MongoDB database and the extraction of data from MongoDB for model training.
+`mongo_db_connect.py`: Handles the connection to the MongoDB database and the extraction of data from MongoDB for model training.
 
 #### 3. entity/
 This folder contains custom classes and entities used across the project, including model handling and prediction entities.
@@ -34,10 +34,8 @@ Contains the logging configuration for the project, enabling structured and mean
 
 #### 7. utils/
 This folder contains utility functions, including:
-
-main_utils.py: Contains utility functions for saving/loading models and other common tasks.
-config/
-Contains configuration files such as config.yaml which defines global settings like database configurations, file paths, and model parameters.
+`main_utils.py`: Contains utility functions for saving/loading models and other common tasks.
+`config/`:Contains configuration files such as config.yaml which defines global settings like database configurations, file paths, and model parameters.
 
 ## Requirements
 The following Python libraries are required to run this project:
