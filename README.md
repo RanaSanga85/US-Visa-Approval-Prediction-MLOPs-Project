@@ -55,27 +55,16 @@ You can install these dependencies via the requirements.txt file:
 
 bash
 `pip install -r requirements.txt`
-Getting Started
-Step 1: Clone the repository
+
+## Getting Started
+#### Step 1: Clone the repository
 bash
-Copy code
 `git clone https://github.com/your-username/us-visa-approval-prediction.git`
-cd us-visa-approval-prediction
-Step 2: Setup MongoDB Connection
-You will need to configure the MongoDB connection by editing the file under US_Visa/configuration/mongodb_config.py. This will allow the pipeline to fetch the visa data from MongoDB for further processing.
+`cd us-visa-approval-prediction`
 
-Step 3: Run the Pipeline
-To run the full pipeline, navigate to the pipeline/ folder and execute the prediction_pipeline.py script.
+#### Step 2: Setup MongoDB Connection
+You will need to configure the MongoDB connection by editing the file under `US_Visa/configuration/mongo_db_connection.py`. This will allow the pipeline to fetch the visa data from MongoDB for further processing.
 
-bash
-Copy code
-python US_Visa/pipeline/prediction_pipeline.py
-This will trigger the following steps:
 
-Data ingestion from MongoDB.
-Data validation and transformation.
-Model training and evaluation.
-Step 4: Evaluate the Model
-The model's performance will be evaluated using Evidently and the results will be logged for monitoring.
 
 Folder Structure
