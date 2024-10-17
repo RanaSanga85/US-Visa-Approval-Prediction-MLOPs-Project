@@ -11,11 +11,12 @@ The root folder containing the main components and configurations of the project
 1. components/
 This folder contains the core modules for the machine learning pipeline, including:
 
-data_ingestion.py: Handles the ingestion of data from MongoDB or other sources.
-data_transformation.py: Responsible for transforming raw data into a format suitable for modeling.
-data_validation.py: Ensures data quality by validating the input data.
-model_evaluation.py: Uses Evidently for evaluating model performance.
-model_trainer.py: Contains code for training machine learning models.
+<li>data_ingestion.py: Handles the ingestion of data from MongoDB or other sources.
+<li>data_transformation.py: Responsible for transforming raw data into a format suitable for modeling.
+<li>data_validation.py: Ensures data quality by validating the input data.
+<li>model_evaluation.py: Uses Evidently for evaluating model performance.
+<li>model_trainer.py: Contains code for training machine learning models.
+
 2. configuration/
 This folder contains files related to configurations and connections, including:
 
